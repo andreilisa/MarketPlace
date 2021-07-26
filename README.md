@@ -1,9 +1,8 @@
 ___Rest Api
 This repository contains the REST API developed for a marketplace.
 
-Development
-
-___Technologies Used: Spring Boot,Spring Security, PostgreSQL, JPA & Hibernate
+___Development
+Technologies Used: Spring Boot,Spring Security, PostgreSQL, JPA & Hibernate
 API development: Swagger
 
 URL
