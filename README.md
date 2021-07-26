@@ -1,16 +1,16 @@
-#Rest Api
-____
+___Rest Api
 This repository contains the REST API developed for a marketplace.
 
-##Development
-____
-Technologies Used: Spring Boot,Spring Security, PostgreSQL, JPA & Hibernate
+Development
+
+___Technologies Used: Spring Boot,Spring Security, PostgreSQL, JPA & Hibernate
 API development: Swagger
-----
-##URL
+
+URL
 http://localhost:8080/swagger-ui.html
-###Endpoints:
-###Register a new user
+
+____Endpoints:
+Register a new user
 POST   /api/v1/registration
 
 {
@@ -18,7 +18,7 @@ POST   /api/v1/registration
 "password": "string",
 "username": "string"
 }
-###GET all products 
+___GET all products 
 GET /productAll
 
 page size: the number of products on a given page
@@ -35,10 +35,10 @@ For create a new product you need to  be login
 "name": "string",
 "price": 0
 }
-#####Show all product by user
+___Show all product by user
 Just click run The application has already saved the login user
 
-#####Update the product
+___Update the product
 /api/v1/products/{id}
 
 Enter the product id you want to update
@@ -50,12 +50,12 @@ and:
 "name": "string",
 "price": 0
 }
-#####Delete the product
-
+___Delete the product
 Enter the ID of the product you want to delete
 
 Example : 44
-###Like/Unlike
+
+___Like/Unlike
 /api/v1/liked/like
 
 /api/v1/liked/dislike
