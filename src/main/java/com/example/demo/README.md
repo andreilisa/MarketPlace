@@ -1,69 +1,84 @@
-___Rest Api
+#Rest Api
 ____
-This repository contains the REST API developed for a marketplace.
+*This repository contains the REST API developed for a marketplace.*
 
-__Development
+##Development
 ____
-Technologies Used: Spring Boot,Spring Security, PostgreSQL, JPA & Hibernate
+Technologies Used: 
+1. Spring Boot 
+2. Spring Security 
+3. PostgreSQL
+4. JPA & Hibernate
+
 API development: Swagger
 
 
-__URL
-http://localhost:8080/swagger-ui.html
+##URL
+*http://localhost:8080/swagger-ui.html*
 
-__Endpoints:
-Register a new user
+##Endpoints:
+1. Create Product
+2. Show Products
+3. Edit Product
+4. Delete Product
+5. List products
+6. List my-products
+7. Like/Unlike
 
-POST   /api/v1/registration
+###Register a new user
 
+*/api/v1/registration*
+````
 {
 "email": "string",
 "password": "string",
 "username": "string"
 }
-___GET all products 
-GET /productAll
+````
+###GET all products 
+*/productAll*
 
 page size: the number of products on a given page
-__CRUD
+##CRUD
 In order to be able to use it, all you have to do is log in
 
-__Create a new Products:
+###Create a new Products:
 
-/api/v1/products
+*/api/v1/products*
 
 
 For create a new product you need to  be login
-
+````
 {
 "name": "string",
 "price": 0
 }
-__Show all product by user
+````
+###Show all product by user
 Just click run The application has already saved the login user
 
-__Update the product
-/api/v1/products/{id}
+###Update the product
+*/api/v1/products/{id}*
 
 Enter the product id you want to update
 
-Example: 44
-
-and:
+Example:  id = 44
+````
 {
 "name": "string",
 "price": 0
 }
-__Delete the product
+````
+###Delete the product
 
 Enter the ID of the product you want to delete
 
-Example : 44
+Example : id =  44
 
-__Like/Unlike
-/api/v1/liked/like
+##Like/Unlike
+*/api/v1/liked/like*
 
-/api/v1/liked/dislike
+*/api/v1/liked/dislike*
 
 Just enter the ID of the product you want to appreciate. It is not possible to appreciate your own product
 
