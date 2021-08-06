@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api
 @RestController
-@RequestMapping("/api/v1/products")
+@Api
+@RequestMapping("/api/v1/liked")
 public class LikeController {
     @Autowired
     LikeService likeService;
 
-    @RequestMapping(value = "/{id}/like", method = RequestMethod.PATCH)
-    public String likeProduct(@RequestParam Long id) throws Exception {
+    @RequestMapping(value = "/like", method = RequestMethod.PATCH)
+    public String likeProduct(@RequestParam Long id) throws NotFound {
 
         return likeService.likeProducts(id);
 
     }
 
-    @RequestMapping(value = "/{id}/dislike", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/dislike", method = RequestMethod.PATCH)
 
-    public String dislikeProduct(@RequestParam Long id) throws Exception {
+    public String dislikeProduct(@RequestParam Long id) throws NotFound {
 
         return likeService.dislikeProduct(id);
     }
