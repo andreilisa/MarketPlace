@@ -8,6 +8,7 @@ import com.example.demo.model.Products;
 import com.example.demo.model.User;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -19,27 +20,25 @@ import java.util.Optional;
 public class LikeService {
     @Autowired
     private LikeRepository likeRepository;
-
-    @Autowired
-    private UserRepository userRepository;
     @Autowired
     private ProductsRepository productsRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    @Transactional
     public User getCurrentUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return userRepository.findByUsername(authentication.getName());
     }
 
     @Transactional
-    public String likeProducts(Long id) throws NotFound {
+    public String likeProducts(Long id) throws Exception {
         Optional<Products> product = productsRepository.findById(id);
         User user = getCurrentUserId();
 
         if (product.isPresent()) {
 
             if (product.get().getUser().getId().equals(user.getId())) {
-                return "not found!";
+                return  HttpStatus.OK + " \n it is not possible to like your own product!";
             }
 
             Optional<Like> like = likeRepository.findByUserIdAndProdId(user, product.get());
@@ -48,20 +47,19 @@ public class LikeService {
                     likeRepository.deleteById(like.get().getId());
                 } else {
                     likeRepository.likeProduct(product.get().getId(), user.getId());
+
                 }
             } else {
                 likeRepository.save(new Like(user, product.get(), true));
             }
-            return "it works";
+            return (HttpStatus.OK ) + "\n product is liked";
         } else {
-            throw new NotFound();
+            throw new Exception("Product Not Found");
         }
-
-
     }
 
     @Transactional
-    public String dislikeProduct(Long id) throws NotFound {
+    public String dislikeProduct(Long id) throws Exception {
         Optional<Products> product = productsRepository.findById(id);
         User user = getCurrentUserId();
 
@@ -69,14 +67,14 @@ public class LikeService {
 
 
             if (product.get().getUser().getId().equals(user.getId())) {
-                return "not found!";
+                return  HttpStatus.OK + " \nit is not possible to unlike your own product!";
             }
 
 
             Optional<Like> like = likeRepository.findByUserIdAndProdId(user, product.get());
             if (like.isPresent()) {
 
-                if (like.get().isLiked()) {
+                if (!like.get().isLiked()) {
                     likeRepository.deleteById(like.get().getId());
                 } else {
                     likeRepository.dislikeProduct(product.get().getId(), user.getId());
@@ -84,12 +82,10 @@ public class LikeService {
             } else {
                 likeRepository.save(new Like(user, product.get(), false));
             }
-            return "it works";
+            return  (HttpStatus.OK ) + "\n product is unliked";
         } else {
-            throw new NotFound();
+            throw new Exception("Product Not Found");
         }
-
-
     }
 
 }

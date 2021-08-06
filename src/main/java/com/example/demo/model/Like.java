@@ -8,12 +8,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+
 @Entity(name = "rating")
 @Table(schema = "public")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Like implements Serializable {
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userid")
     @JsonIgnore
@@ -35,4 +37,5 @@ public class Like implements Serializable {
         this.prodId = prodId;
         this.isLiked = isLiked;
     }
+
 }

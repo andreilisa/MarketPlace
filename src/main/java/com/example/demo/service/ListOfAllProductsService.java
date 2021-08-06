@@ -16,7 +16,6 @@ public class ListOfAllProductsService {
 
     }
 
-
     public Page<Products> findAll(int pageNumber, int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<Products> products = productsRepository.findAll(pageable);

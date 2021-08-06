@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
@@ -34,9 +32,10 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonManagedReference
     private List<Products> products;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "userId")
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Like> like;
+
     public User(String username,
                 String password,
                 String email,
@@ -47,7 +46,6 @@ public class User implements UserDetails {
         this.userRole = user;
 
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

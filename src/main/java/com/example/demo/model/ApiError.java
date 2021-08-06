@@ -1,21 +1,17 @@
 package com.example.demo.model;
 
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.http.HttpStatus;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import java.util.Arrays;
-import java.util.List;
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class ApiError {
-    private HttpStatus status;
+
     private String message;
-    private List<String> errors;
-
-
-    public ApiError(HttpStatus status, String message, String error) {
-        super();
-        this.status = status;
-        this.message = message;
-        errors = Arrays.asList(error);
-    }
+    private String details;
 }

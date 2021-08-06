@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.swing.text.html.Option;
+
 import java.util.Optional;
 
 @Repository
@@ -19,7 +19,7 @@ public interface LikeRepository extends JpaRepository<Like, Long> {
 
 
     @Modifying
-    @Query("update rating  r SET r.isLiked = false where  r.prodId.id =:prodId and r.userId.id = :userId")
+    @Query("update rating  r SET r.isLiked = false where  r.prodId.id =:prodId and  r.userId.id = :userId")
     void dislikeProduct(@Param("prodId") Long prodId, Long userId);
 
     Optional<Like> findByUserIdAndProdId(User user, Products products);
