@@ -15,12 +15,12 @@ Technologies Used:
 API development: Swagger
 
 ----
-##Requirements
+## Requirements
 For building and running the application you need:
 * JDK 1.8
 * Maven 
 ----
-##Run the app
+## Run the app
 1. Fork this repository and clone it
 `````
 https://github.com/andreilisa/MarketPlace
@@ -38,12 +38,12 @@ mvn install
 mvn spring-boot:run
 ````
 ----
-##URL
+## URL
 *http://localhost:8080/swagger-ui.html*
 
 ----
 
-##PostgreSQL DB
+## PostgreSQL DB
 ````
 spring.datasource.driver-class-name=org.postgresql.Driver
 spring.datasource.url=jdbc:postgresql://localhost:5432/web_db
