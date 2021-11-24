@@ -1,9 +1,9 @@
 # Rest Api
 
 ____
-####*This repository contains the REST API developed for a marketplace.*
+# This repository contains the REST API developed for a marketplace.
 ____
-##Development
+# Development
 
 Technologies Used:
 
