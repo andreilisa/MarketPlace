@@ -85,8 +85,8 @@ server.error.whitelabel.enabled=false
 page size: the number of products on a given page
 
 ----
-##CRUD
-####In order to be able to use CRUD, all you have to do is login
+## CRUD
+#### In order to be able to use CRUD, all you have to do is login
 
 ----
 ### Create a new Products:
